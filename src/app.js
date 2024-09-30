@@ -35,9 +35,10 @@ admin.initializeApp({
 // Inicializa GoogleAuth con tu cuenta de servicio
 const SCOPES = ["https://www.googleapis.com/auth/cloud-platform"];
 // Configura el envío de notificaciones
+// Configura el envío de notificaciones
 async function sendNotificationFCM(title, body) {
   const auth = new GoogleAuth({
-    keyFilename: "./react-notify.json",
+	credentials: serviceAccount, // Pasa el objeto de credenciales en lugar de `keyFilename`
     scopes: SCOPES,
   });
 
@@ -73,6 +74,7 @@ async function sendNotificationFCM(title, body) {
 
     const data = await response.json();
     console.log("Notificación enviada:", data);
+	
     return data;
   } catch (error) {
     console.error("Error enviando notificación:", error);
