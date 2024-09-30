@@ -54,7 +54,7 @@ async function sendNotificationFCM(title, body) {
         title: title,
         body: body,
       },
-      topic: "general", // Puedes ajustar para enviar a un token o grupo
+      topic: "all", // Puedes ajustar para enviar a un token o grupo
     },
   };
 
@@ -100,7 +100,7 @@ const subscribeToTopic = async (token) => {
     // Suscribir el token al topic 'general'
     const response = await admin
       .messaging()
-      .subscribeToTopic([token], "general");
+      .subscribeToTopic([token], "all");
     console.log("Suscripción exitosa:", response);
     return response;
   } catch (error) {
@@ -114,7 +114,7 @@ app.post("/subscribe", async (req, res) => {
   const { token } = req.body;
   try {
     const response = await subscribeToTopic(token);
-    res.status(200).send("Dispositivo suscrito al topic general");
+    res.status(200).send("Dispositivo suscrito al topic alls");
   } catch (error) {
     res.status(500).send("Error suscribiendo al topic");
   }
