@@ -7,9 +7,7 @@ import fetch from "node-fetch"; // Si estás usando una versión anterior de Nod
 import admin from "firebase-admin";
 import cors from "cors";
 
-console.log(process.env.FIREBASE_SERVICE_ACCOUNT);
-
-const serviceAccount = process.env.FIREBASE_SERVICE_ACCOUNT;
+const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
 
 
 const app = express();
